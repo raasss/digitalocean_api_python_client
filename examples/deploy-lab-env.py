@@ -168,3 +168,50 @@ if drecord1 is None:
 
 print
 print('drecord1 = {}'.format(vars(drecord1)))
+
+print
+print('### Find previously created domain record ###')
+print
+
+drecord2 = client.domain_records.find(domain_name=domain1.name, record_id=drecord1.id)
+
+print
+print('drecord2 = {}'.format(vars(drecord2)))
+
+print
+print('### Delete/Create/Update test record ###')
+print
+
+drecord3_def = {'type': 'A',
+                'name': 'droplet-test-alias',
+                'data': droplet1.public_ipv4()}
+
+drecord4_def = {'name': 'droplet-updated-alias'}
+
+drecords = client.domain_records.all(domain1.name)
+
+drecord3 = None
+drecord4 = None
+for drecord in drecords:
+    if drecord.name == drecord3_def['name']:
+        drecord3 = drecord
+    if drecord.name == drecord4_def['name']:
+        drecord4 = drecord
+    if drecord3 is not None and drecord4 is not None:
+        break
+
+if drecord3 is not None:
+    client.domain_records.delete(for_domain=domain1.name, record_id=drecord3.id)
+
+if drecord4 is not None:
+    client.domain_records.delete(for_domain=domain1.name, record_id=drecord4.id)
+
+drecord3 = client.domain_records.create(record=drecord3_def, for_domain=domain1.name)
+
+print
+print('drecord3 = {}'.format(vars(drecord3)))
+
+drecord4 = client.domain_records.update(record=drecord4_def, for_domain=domain1.name, record_id=drecord3.id)
+
+print
+print('drecord4 = {}'.format(vars(drecord4)))
