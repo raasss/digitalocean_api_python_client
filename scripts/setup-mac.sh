@@ -26,7 +26,7 @@ if [ ! -f "${VENV_PATH}/bin/activate" ]; then
     virtualenv -p python2 "${VENV_PATH}"
 fi
 source "${VENV_PATH}/bin/activate" && \
-    pip install requests PyYAML
+    pip install requests PyYAML nose mock
 deactivate
 
 VENV_PATH="${VENV_ROOTPATH}/python3"
@@ -34,5 +34,5 @@ if [ ! -f "${VENV_PATH}/bin/activate" ]; then
     virtualenv -p python3 "${VENV_PATH}"
 fi
 source "${VENV_PATH}/bin/activate" && \
-    pip install requests  PyYAML
+    pip install requests PyYAML nose
 deactivate
