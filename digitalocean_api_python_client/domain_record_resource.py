@@ -38,22 +38,14 @@ class DomainRecordResource(Api):
                                response_body_json_key='domain_record')
 
     def update(self, record, for_domain, record_id):
-        api_uri_query = "/{}/records/{}".format(for_domain, record_id)
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        query = "/{}/records/{}".format(for_domain, record_id)
 
-        request_method = "PUT"
-        request_body = record
-        response_header_status_ok = 200
-        response_body_json_key = "domain_record"
-
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_object(method='PUT',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body=record,
+                               response_ok=200,
+                               response_body_json_key='domain_record')
 
     def delete(self, for_domain, record_id):
         query = "/{}/records/{}".format(for_domain, record_id)
