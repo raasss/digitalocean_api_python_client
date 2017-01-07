@@ -20,51 +20,51 @@ class DropletActionResource(Api):
         query = "/{}/actions".format(droplet_id)
 
         return self.get_object(method='POST',
-                            url=self.add_query_to_url(query),
-                            headers=self.headers,
-                            body={"type": "enable_backups"},
-                            response_ok=201,
-                            response_body_json_key='action')
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body={"type": "enable_backups"},
+                               response_ok=201,
+                               response_body_json_key='action')
 
     def enable_backups_for_tag(self, tag):
         query = "/actions?tag_name={}".format(tag)
 
         return self.get_collection(method='POST',
-                            url=self.add_query_to_url(query),
-                            headers=self.headers,
-                            body={"type": "enable_backups"},
-                            response_ok=201,
-                            response_body_json_key='actions')
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "enable_backups"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
 
     def disable_backups(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
 
         return self.get_object(method='POST',
-                            url=self.add_query_to_url(query),
-                            headers=self.headers,
-                            body={"type": "disable_backups"},
-                            response_ok=201,
-                            response_body_json_key='action')
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body={"type": "disable_backups"},
+                               response_ok=201,
+                               response_body_json_key='action')
 
     def disable_backups_for_tag(self, tag):
         query = "/actions?tag_name={}".format(tag)
 
         return self.get_collection(method='POST',
-                            url=self.add_query_to_url(query),
-                            headers=self.headers,
-                            body={"type": "disable_backups"},
-                            response_ok=201,
-                            response_body_json_key='actions')
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "disable_backups"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
 
     def reboot(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
 
         return self.get_object(method='POST',
-                            url=self.add_query_to_url(query),
-                            headers=self.headers,
-                            body={"type": "reboot"},
-                            response_ok=201,
-                            response_body_json_key='action')
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body={"type": "reboot"},
+                               response_ok=201,
+                               response_body_json_key='action')
 
     def power_cycle(self, droplet_id=None, tag=None):
 
