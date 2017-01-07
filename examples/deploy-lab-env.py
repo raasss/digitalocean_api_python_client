@@ -140,6 +140,15 @@ if domain1 is None:
 print
 print('domain1: {}'.format(vars(domain1)))
 
+print
+print('### Find just created domain ###')
+print
+
+domain = client.domains.find(domain1_def['name'])
+
+print
+print('domain: {}'.format(vars(domain)))
+
 ###############################################################################
 ###############################################################################
 ###############################################################################
