@@ -168,24 +168,16 @@ class DropletActionResource(Api):
                                response_body_json_key='action')
 
     def resize(self, droplet_id, size):
-        api_uri_query = "/{}/actions".format(droplet_id)
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        query = "/{}/actions".format(droplet_id)
 
-        request_method = "POST"
-        request_body = {"type": "resize",
-                        "disk": True,
-                        "size": size}
-        response_header_status_ok = 201
-        response_body_json_key = "action"
-
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_object(method='POST',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body={"type": "resize",
+                                     "disk": True,
+                                     "size": size},
+                               response_ok=201,
+                               response_body_json_key='action')
 
     def rebuild(self, droplet_id, image):
         api_uri_query = "/{}/actions".format(droplet_id)
