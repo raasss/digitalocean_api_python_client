@@ -4,14 +4,7 @@ from .api import Api
 class DropletActionResource(Api):
     path = '/v2/droplets'
 
-    # @staticmethod
-    # def create_object_from_params(params):
-    #     return Action(**params)
-
     def all(self, droplet_id, page=None, per_page=None):
-        if per_page is None:
-            per_page = self.per_page
-
         query = '/{}/actions?page={}&per_page={}'.format(droplet_id, page or 1, per_page)
 
         return self.get_paginator(method='GET',
