@@ -71,6 +71,22 @@ if droplet1.locked == True:
 print
 print('droplet1 = {}'.format(vars(droplet1)))
 
+print
+print('### Enable backups for just created droplet ###')
+print
+
+droplet1 = client.droplets.find(droplet1.id)
+if 'backups' not in droplet1.features:
+    print('>>> Enabling backups for {}...'.format(droplet1.name))
+    action = client.droplet_actions.enable_backups(droplet1.id)
+else:
+    print('>>> Backups already enabled for {}.'.format(droplet1.name))
+
+print
+print('droplet1.features = {}'.format(droplet1.features))
+
+quit()
+
 ###############################################################################
 ###############################################################################
 ###############################################################################
