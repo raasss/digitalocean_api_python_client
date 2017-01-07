@@ -126,30 +126,25 @@ class DropletActionResource(Api):
                                    response_ok=201,
                                    response_body_json_key='actions')
 
-    def power_on(self, droplet_id=None, tag=None):
-        if droplet_id is not None and tag is None:
-            api_uri_query = "/{}/actions".format(droplet_id)
-            response_body_json_key = "action"
-        elif tag is not None and droplet_id is None:
-            api_uri_query = "/actions?tag_name={}".format(tag)
-            response_body_json_key = "actions"
-        else:
-            raise ValueError()
+    def power_on(self, droplet_id):
+        query = "/{}/actions".format(droplet_id)
 
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        return self.get_object(method='POST',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body={"type": "power_on"},
+                               response_ok=201,
+                               response_body_json_key='action')
 
-        request_method = "POST"
-        request_body = {"type": "power_on"}
-        response_header_status_ok = 201
+    def power_on_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
 
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "power_on"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
 
     def restore(self, droplet_id, image_id):
         api_uri_query = "/{}/actions".format(droplet_id)
