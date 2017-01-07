@@ -21,6 +21,7 @@ class DomainResource(Api):
 
     def create(self, domain_def):
         query = ''
+
         return self.get_object(method='POST',
                                url=self.add_query_to_url(query),
                                headers=self.headers,
@@ -29,22 +30,14 @@ class DomainResource(Api):
                                response_body_json_key='domain')
 
     def find(self, name):
-        api_uri_query = "/{}".format(name)
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        query = "/{}".format(name)
 
-        request_method = "GET"
-        request_body = None
-        response_header_status_ok = 200
-        response_body_json_key = "domain"
-
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_object(method='GET',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body=None,
+                               response_ok=200,
+                               response_body_json_key='domain')
 
     def delete(self, name):
         query = "/{}".format(name)
