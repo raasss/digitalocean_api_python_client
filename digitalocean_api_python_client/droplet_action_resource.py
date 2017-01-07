@@ -252,34 +252,27 @@ class DropletActionResource(Api):
                                    response_ok=201,
                                    response_body_json_key='actions')
 
-    def snapshot(self, droplet_id=None, tag=None, name=None):
-        if name is None:
-            raise ValueError
+    def snapshot(self, droplet_id, name):
+        query = "/{}/actions".format(droplet_id)
 
-        if droplet_id is not None and tag is None:
-            api_uri_query = "/{}/actions".format(droplet_id)
-            response_body_json_key = "action"
-        elif tag is not None and droplet_id is None:
-            api_uri_query = "/actions?tag_name={}".format(tag)
-            response_body_json_key = "actions"
-        else:
-            raise ValueError()
+        return self.get_object(method='POST',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body={"type": "snapshot",
+                                     "name": name},
+                               response_ok=201,
+                               response_body_json_key='action')
 
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+    def snapshot_for_tag(self, tag, name):
+        query = "/actions?tag_name={}".format(tag)
 
-        request_method = "POST"
-        request_body = {"type": "snapshot",
-                        "name": name}
-        response_header_status_ok = 201
-
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "snapshot",
+                                         "name": name},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
 
     def find(self, droplet_id, action_id):
         api_uri_query = "/{}/actions/{}".format(droplet_id, action_id)
