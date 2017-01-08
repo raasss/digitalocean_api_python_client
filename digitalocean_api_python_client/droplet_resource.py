@@ -62,7 +62,7 @@ class DropletResource(Api):
                             response_ok=204)
 
     def delete_for_tag(self, tag):
-        query = "?tag_name={}".format(tag)
+        query = "?tag_name={}".format(tag)e
 
         return self.request(method='DELETE',
                             url=self.add_query_to_url(query),
@@ -71,19 +71,11 @@ class DropletResource(Api):
                             response_ok=204)
 
     def kernels(self, droplet_id):
-        api_uri_query = "/{}/kernels".format(droplet_id)
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        query = "/{}/kernels".format(droplet_id)
 
-        request_method = "GET"
-        request_body = None
-        response_header_status_ok = 200
-        response_body_json_key = "kernels"
-
-        o = self.get_api_response_objects(request_method,
-                                          api_uri,
-                                          response_header_status_ok,
-                                          self.generate_http_request_headers(),
-                                          request_body,
-                                          response_body_json_key)
-
-        return o
+        return self.get_collection(method='GET',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body=None,
+                                   response_ok=200,
+                                   response_body_json_key='kernels')
