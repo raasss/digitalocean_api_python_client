@@ -9,6 +9,7 @@ from .ssh_key import SshKey
 from .domain_record import DomainRecord
 from .image import Image
 from .floating_ip import FloatingIp
+from .region import Region
 
 class Api(object):
     token = ''
@@ -47,7 +48,8 @@ class Api(object):
                      'domain_records': DomainRecord,
                      'backups': Image,
                      'floating_ips': FloatingIp,
-                     'floating_ip': FloatingIp}
+                     'floating_ip': FloatingIp,
+                     'regions': Region}
 
         return converter[key](**json)
 
