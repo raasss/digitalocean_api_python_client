@@ -4,10 +4,6 @@ from .api import Api
 class FloatingIpResource(Api):
     api_uri_path = '/v2/floating_ips'
 
-    @staticmethod
-    def create_object_from_params(params):
-        return FloatingIp(**params)
-
     def all(self):
         api_uri_query = ""
         api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
