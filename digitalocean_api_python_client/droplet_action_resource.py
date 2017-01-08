@@ -4,17 +4,17 @@ from .api import Api
 class DropletActionResource(Api):
     path = '/v2/droplets'
 
-    def all(self, droplet_id, page=None, per_page=None):
-        query = '/{}/actions?page={}&per_page={}'.format(droplet_id, page or 1, per_page)
-
-        return self.get_paginator(method='GET',
-                                  url=self.add_query_to_url(query),
-                                  headers=self.headers,
-                                  body=None,
-                                  response_ok=200,
-                                  response_body_json_key='actions',
-                                  page=page,
-                                  per_page=per_page)
+    # def all(self, droplet_id, page=None, per_page=None):
+    #     query = '/{}/actions?page={}&per_page={}'.format(droplet_id, page or 1, per_page)
+    #
+    #     return self.get_paginator(method='GET',
+    #                               url=self.add_query_to_url(query),
+    #                               headers=self.headers,
+    #                               body=None,
+    #                               response_ok=200,
+    #                               response_body_json_key='actions',
+    #                               page=page,
+    #                               per_page=per_page)
 
     def enable_backups(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
@@ -26,16 +26,6 @@ class DropletActionResource(Api):
                                response_ok=201,
                                response_body_json_key='action')
 
-    def enable_backups_for_tag(self, tag):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "enable_backups"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
-
     def disable_backups(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
 
@@ -45,16 +35,6 @@ class DropletActionResource(Api):
                                body={"type": "disable_backups"},
                                response_ok=201,
                                response_body_json_key='action')
-
-    def disable_backups_for_tag(self, tag):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "disable_backups"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
 
     def reboot(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
@@ -76,16 +56,6 @@ class DropletActionResource(Api):
                                response_ok=201,
                                response_body_json_key='action')
 
-    def power_cycle_for_tag(self, tag):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "power_cycle"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
-
     def shutdown(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
 
@@ -95,16 +65,6 @@ class DropletActionResource(Api):
                                body={"type": "shutdown"},
                                response_ok=201,
                                response_body_json_key='action')
-
-    def shutdown_for_tag(self, tag):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "shutdown"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
 
     def power_off(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
@@ -116,16 +76,6 @@ class DropletActionResource(Api):
                                response_ok=201,
                                response_body_json_key='action')
 
-    def power_off_for_tag(self, tag):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "power_off"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
-
     def power_on(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
 
@@ -135,16 +85,6 @@ class DropletActionResource(Api):
                                body={"type": "power_on"},
                                response_ok=201,
                                response_body_json_key='action')
-
-    def power_on_for_tag(self, tag):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "power_on"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
 
     def restore(self, droplet_id, image_id):
         query = "/{}/actions".format(droplet_id)
@@ -222,16 +162,6 @@ class DropletActionResource(Api):
                                response_ok=201,
                                response_body_json_key='action')
 
-    def enable_ipv6_for_tag(self, tag):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "enable_ipv6"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
-
     def enable_private_networking(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
 
@@ -241,16 +171,6 @@ class DropletActionResource(Api):
                                body={"type": "enable_private_networking"},
                                response_ok=201,
                                response_body_json_key='action')
-
-    def enable_private_networking_for_tag(self, droplet_id):
-        query = "/actions?tag_name={}".format(tag)
-
-        return self.get_collection(method='POST',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body={"type": "enable_private_networking"},
-                                   response_ok=201,
-                                   response_body_json_key='actions')
 
     def snapshot(self, droplet_id, name):
         query = "/{}/actions".format(droplet_id)
@@ -262,6 +182,86 @@ class DropletActionResource(Api):
                                      "name": name},
                                response_ok=201,
                                response_body_json_key='action')
+
+    def power_cycle_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "power_cycle"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
+
+    def power_on_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "power_on"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
+
+    def power_off_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "power_off"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
+
+    def shutdown_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "shutdown"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
+
+    def enable_private_networking_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "enable_private_networking"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
+
+    def enable_ipv6_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "enable_ipv6"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
+
+    def enable_backups_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "enable_backups"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
+
+    def disable_backups_for_tag(self, tag):
+        query = "/actions?tag_name={}".format(tag)
+
+        return self.get_collection(method='POST',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body={"type": "disable_backups"},
+                                   response_ok=201,
+                                   response_body_json_key='actions')
 
     def snapshot_for_tag(self, tag, name):
         query = "/actions?tag_name={}".format(tag)
