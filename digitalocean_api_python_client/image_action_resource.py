@@ -2,7 +2,8 @@ from .api import Api
 
 
 class ImageActionResource(Api):
-    api_uri_path = '/v2/images'
+    def __init__(self):
+        self.path = '/v2/images'
 
     def transfer(self, image_id, region):
         query = "/{}/actions".format(image_id)
