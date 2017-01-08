@@ -2,7 +2,8 @@ from .api import Api
 
 
 class DropletActionResource(Api):
-    path = '/v2/droplets'
+    def __init__(self):
+        self.path = '/v2/droplets'
 
     def enable_backups(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
