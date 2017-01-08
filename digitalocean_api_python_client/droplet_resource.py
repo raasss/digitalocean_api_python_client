@@ -53,6 +53,15 @@ class DropletResource(Api):
                                   page=page,
                                   per_page=per_page)
 
+    def kernels(self, droplet_id):
+        query = "/{}/kernels".format(droplet_id)
+
+        return self.get_collection(method='GET',
+                                   url=self.add_query_to_url(query),
+                                   headers=self.headers,
+                                   body=None,
+                                   response_ok=200,
+                                   response_body_json_key='kernels')
     def delete(self, droplet_id):
         query = "/{}".format(droplet_id)
 
@@ -71,12 +80,3 @@ class DropletResource(Api):
                             body=None,
                             response_ok=204)
 
-    def kernels(self, droplet_id):
-        query = "/{}/kernels".format(droplet_id)
-
-        return self.get_collection(method='GET',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body=None,
-                                   response_ok=200,
-                                   response_body_json_key='kernels')
