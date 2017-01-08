@@ -34,6 +34,18 @@ class ImageResource(Api):
                                   page=page,
                                   per_page=per_page)
 
+    def actions(self, image_id):
+        query = "/{}/actions".format(image_id)
+
+        return self.get_paginator(method='GET',
+                                  url=self.add_query_to_url(query),
+                                  headers=self.headers,
+                                  body=None,
+                                  response_ok=200,
+                                  response_body_json_key='actions',
+                                  page=page,
+                                  per_page=per_page)
+
     def find(self, image_id_or_name):
         query = '/{}'.format(image_id_or_name)
 
@@ -46,12 +58,11 @@ class ImageResource(Api):
 
     def update(self, image_id, name):
         query = '/{}'.format(image_id)
-        request_body = {"name": name}
 
         return self.get_object(method='PUT',
                                url=self.add_query_to_url(query),
                                headers=self.headers,
-                               body=request_body,
+                               body={"name": name},
                                response_ok=200,
                                response_body_json_key='image')
 
