@@ -2,7 +2,8 @@ from .api import Api
 
 
 class FloatingIpActionResource(Api):
-    api_uri_path = '/v2/floating_ips'
+    def __init__(self):
+        self.path = '/v2/floating_ips'
 
     def assign(self, floating_ip_address, droplet_id):
         query = "/{}/actions".format(floating_ip_address)
