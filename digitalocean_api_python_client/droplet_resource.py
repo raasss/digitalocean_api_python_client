@@ -16,6 +16,7 @@ class DropletResource(Api):
 
     def create_multiple(self, droplets_def):
         query = ''
+
         return self.get_collection(method='POST',
                                    url=self.add_query_to_url(query),
                                    headers=self.headers,
@@ -62,7 +63,7 @@ class DropletResource(Api):
                             response_ok=204)
 
     def delete_for_tag(self, tag):
-        query = "?tag_name={}".format(tag)e
+        query = "?tag_name={}".format(tag)
 
         return self.request(method='DELETE',
                             url=self.add_query_to_url(query),
