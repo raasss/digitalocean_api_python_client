@@ -10,7 +10,7 @@ class SnapshotResource(Api):
 
         if resource_type is None:
             query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
-        elif:
+        else:
             query = '?resource_type={}&page={}&per_page={}'.format(
                 resource_type, page or 1, per_page or self.per_page)
 
