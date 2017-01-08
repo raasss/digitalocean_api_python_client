@@ -28,12 +28,12 @@ class FloatingIpActionResource(Api):
     def all(self, floating_ip_address):
         query = "/{}/actions".format(floating_ip_address)
 
-        return self.get_collection(method='GET',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body=None,
-                                   response_ok=200,
-                                   response_body_json_key='actions')
+        return self.get_paginator(method='GET',
+                                  url=self.add_query_to_url(query),
+                                  headers=self.headers,
+                                  body=None,
+                                  response_ok=200,
+                                  response_body_json_key='actions')
 
     def find(self, floating_ip_address, action_id):
         query = "/{}/actions/{}".format(floating_ip_address, action_id)
