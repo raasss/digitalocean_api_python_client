@@ -10,6 +10,7 @@ from .domain_record import DomainRecord
 from .image import Image
 from .floating_ip import FloatingIp
 from .region import Region
+from .size import Size
 
 class Api(object):
     token = ''
@@ -49,7 +50,8 @@ class Api(object):
                      'backups': Image,
                      'floating_ips': FloatingIp,
                      'floating_ip': FloatingIp,
-                     'regions': Region}
+                     'regions': Region,
+                     'sizes': Size}
 
         return converter[key](**json)
 

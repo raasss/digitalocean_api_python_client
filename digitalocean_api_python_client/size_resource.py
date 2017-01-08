@@ -2,22 +2,17 @@ from .api import Api
 
 
 class SizeResource(Api):
-    api_uri_path = '/v2/sizes'
+    def __init__(self):
+        self.path = '/v2/sizes'
 
-    def all(self, image_id):
-        api_uri_query = ""
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+    def all(self):
+        query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
 
-        request_method = "GET"
-        request_body = None
-        response_header_status_ok = 200
-        response_body_json_key = "sizes"
-
-        o = self.get_api_response_objects(request_method,
-                                          api_uri,
-                                          response_header_status_ok,
-                                          self.generate_http_request_headers(),
-                                          request_body,
-                                          response_body_json_key)
-
-        return o
+        return self.get_paginator(method='GET',
+                                  url=self.add_query_to_url(query),
+                                  headers=self.headers,
+                                  body=None,
+                                  response_ok=200,
+                                  response_body_json_key='sizes',
+                                  page=page,
+                                  per_page=per_page)
