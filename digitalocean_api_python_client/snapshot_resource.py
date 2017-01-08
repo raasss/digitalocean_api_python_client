@@ -8,7 +8,11 @@ class SnapshotResource(Api):
     def all(self, resource_type=None, page=None, per_page=None):
         logging.info('List all snapshots. (resource_type={}, page={}, per_page={})'.format(resource_type, page, per_page))
 
-        query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
+        if resource_type is None:
+            query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
+        elif:
+            query = '?resource_type={}&page={}&per_page={}'.format(
+                resource_type, page or 1, per_page or self.per_page)
 
         return self.get_paginator(method='GET',
                                   url=self.add_query_to_url(query),
