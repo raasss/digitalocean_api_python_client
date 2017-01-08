@@ -2,7 +2,8 @@ from .api import Api
 
 
 class FloatingIpResource(Api):
-    api_uri_path = '/v2/floating_ips'
+    def __init__(self):
+        self.path = '/v2/floating_ips'
 
     def all(self):
         query = ""
