@@ -56,12 +56,45 @@ class DropletResource(Api):
     def kernels(self, droplet_id):
         query = "/{}/kernels".format(droplet_id)
 
-        return self.get_collection(method='GET',
-                                   url=self.add_query_to_url(query),
-                                   headers=self.headers,
-                                   body=None,
-                                   response_ok=200,
-                                   response_body_json_key='kernels')
+        return self.get_paginator(method='GET',
+                                  url=self.add_query_to_url(query),
+                                  headers=self.headers,
+                                  body=None,
+                                  response_ok=200,
+                                  response_body_json_key='kernels')
+
+    def snapshots(self, droplet_id):
+        query = "/{}/snapshots".format(droplet_id)
+
+        return self.get_paginator(method='GET',
+                                  url=self.add_query_to_url(query),
+                                  headers=self.headers,
+                                  body=None,
+                                  response_ok=200,
+                                  response_body_json_key='snapshots')
+
+    def backups(self, droplet_id):
+        query = "/{}/backups".format(droplet_id)
+
+        return self.get_paginator(method='GET',
+                                  url=self.add_query_to_url(query),
+                                  headers=self.headers,
+                                  body=None,
+                                  response_ok=200,
+                                  response_body_json_key='backups')
+
+    def actions(self, droplet_id, page=None, per_page=None):
+        query = '/{}/actions?page={}&per_page={}'.format(droplet_id, page or 1, per_page)
+
+        return self.get_paginator(method='GET',
+                                  url=self.add_query_to_url(query),
+                                  headers=self.headers,
+                                  body=None,
+                                  response_ok=200,
+                                  response_body_json_key='actions',
+                                  page=page,
+                                  per_page=per_page)
+
     def delete(self, droplet_id):
         query = "/{}".format(droplet_id)
 
@@ -80,3 +113,8 @@ class DropletResource(Api):
                             body=None,
                             response_ok=204)
 
+    def neighbors(self):
+        raise NotImplementedError
+
+    def all_neighbors(self):
+        raise NotImplementedError
