@@ -4,6 +4,7 @@ from .api import Api
 class DropletActionResource(Api):
     path = '/v2/droplets'
 
+    ### It seems that this method is deprecated by DigitalOcena
     # def all(self, droplet_id, page=None, per_page=None):
     #     query = '/{}/actions?page={}&per_page={}'.format(droplet_id, page or 1, per_page)
     #
