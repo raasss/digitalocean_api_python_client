@@ -4,19 +4,6 @@ from .api import Api
 class DropletActionResource(Api):
     path = '/v2/droplets'
 
-    ### It seems that this method is deprecated by DigitalOcena
-    # def all(self, droplet_id, page=None, per_page=None):
-    #     query = '/{}/actions?page={}&per_page={}'.format(droplet_id, page or 1, per_page)
-    #
-    #     return self.get_paginator(method='GET',
-    #                               url=self.add_query_to_url(query),
-    #                               headers=self.headers,
-    #                               body=None,
-    #                               response_ok=200,
-    #                               response_body_json_key='actions',
-    #                               page=page,
-    #                               per_page=per_page)
-
     def enable_backups(self, droplet_id):
         query = "/{}/actions".format(droplet_id)
 
