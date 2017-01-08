@@ -42,7 +42,8 @@ class Api(object):
                      'ssh_key': SshKey,
                      'ssh_keys': SshKey,
                      'domain_record': DomainRecord,
-                     'domain_records': DomainRecord}
+                     'domain_records': DomainRecord,
+                     'backups': Image}
         return converter[key](**json)
 
     @staticmethod
