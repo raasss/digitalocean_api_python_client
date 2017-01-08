@@ -2,7 +2,8 @@ from .api import Api
 
 
 class RegionResource(Api):
-    api_uri_path = '/v2/regions'
+    def __init__(self):
+        self.path = '/v2/regions'
 
     def all(self):
         query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
