@@ -11,6 +11,7 @@ from .image import Image
 from .floating_ip import FloatingIp
 from .region import Region
 from .size import Size
+from .tag import Tag
 
 class Api(object):
     token = ''
@@ -51,7 +52,9 @@ class Api(object):
                      'floating_ips': FloatingIp,
                      'floating_ip': FloatingIp,
                      'regions': Region,
-                     'sizes': Size}
+                     'sizes': Size,
+                     'tag': Tag,
+                     'tags': Tag}
 
         return converter[key](**json)
 
