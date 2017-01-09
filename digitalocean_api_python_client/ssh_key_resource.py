@@ -21,72 +21,40 @@ class SshKeyResource(Api):
                                   per_page=per_page)
 
     def create(self, ssh_key_def):
-        api_uri_query = ""
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        query = ""
 
-        request_method = "POST"
-        request_body = ssh_key_def
-        response_header_status_ok = 201
-        response_body_json_key = "ssh_key"
-
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_object(method='POST',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body=ssh_key_def,
+                               response_ok=201,
+                               response_body_json_key='ssh_key')
 
     def find(self, id):
-        api_uri_query = "/{}".format(id)
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
-        request_method = "GET"
-        request_body = None
-        response_header_status_ok = 200
-        response_body_json_key = "ssh_key"
+        query = "/{}".format(id)
 
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_object(method='GET',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body=None,
+                               response_ok=200,
+                               response_body_json_key='ssh_key')
 
     def update(self, id, name):
-        api_uri_query = "/{}".format(id)
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        query = "/{}".format(id)
 
-        request_method = "PUT"
-        request_body = {"name": name}
-        response_header_status_ok = 200
-        response_body_json_key = "ssh_key"
-
-        o = self.get_api_response_object(request_method,
-                                         api_uri,
-                                         response_header_status_ok,
-                                         self.generate_http_request_headers(),
-                                         request_body,
-                                         response_body_json_key)
-
-        return o
+        return self.get_object(method='PUT',
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body={"name": name},
+                               response_ok=200,
+                               response_body_json_key='ssh_key')
 
     def delete(self, ssh_key_id):
-        api_uri_query = "/{}".format(volume_id)
-        api_uri = "{base}{path}{query}".format(base=self.api_uri_base, path=self.api_uri_path, query=api_uri_query)
+        query = "/{}".format(ssh_key_id)
 
-        request_method = "DELETE"
-        request_body = ""
-        response_header_status_ok = 204
-        response_body_json_key = ""
-
-        r = requests.request(method=request_method,
-                             url=api_uri,
-                             headers=self.generate_http_request_headers())
-
-        if r.status_code != response_header_status_ok:
-            raise ValueError("HTTP request failed")
-
-        return r.status_code
+        return self.request(method='DELETE',
+                            url=self.add_query_to_url(query),
+                            headers=self.headers,
+                            body=None,
+                            response_ok=204)
