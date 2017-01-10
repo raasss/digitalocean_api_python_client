@@ -11,3 +11,11 @@ class SshKey(object):
 
     def __repr__(self):
         return str(vars(self))
+
+    def __repr__(self):
+        s = 'id          : {}\n'.format(self.id)
+        s += 'fingerprint : {}\n'.format(self.fingerprint)
+        s += 'public_key  : {}\n'.format(self.public_key)
+        s += 'name        : {}'.format(self.name)
+
+        return s
