@@ -1,6 +1,7 @@
 from .api import Api
 from .account_resource import AccountResource
 from .image_resource import ImageResource
+from .image_action_resource import ImageActionResource
 from .action_resource import ActionResource
 from .volume_resource import VolumeResource
 from .volume_action_resource import VolumeActionResource
@@ -10,6 +11,11 @@ from .droplet_resource import DropletResource
 from .droplet_action_resource import DropletActionResource
 from .snapshot_resource import SnapshotResource
 from .ssh_key_resource import SshKeyResource
+from .floating_ip_action_resource import FloatingIpActionResource
+from .floating_ip_resource import FloatingIpResource
+from .region_resource import RegionResource
+from .size_resource import SizeResource
+from .tag_resource import TagResource
 
 import os
 import yaml
@@ -32,6 +38,7 @@ class Client(object):
 
         self.account = AccountResource()
         self.images = ImageResource()
+        self.image_actions = ImageActionResource()
         self.actions = ActionResource()
         self.volumes = VolumeResource()
         self.volume_actions = VolumeActionResource()
@@ -41,3 +48,9 @@ class Client(object):
         self.snapshots = SnapshotResource()
         self.droplet_actions = DropletActionResource()
         self.ssh_keys = SshKeyResource()
+        self.floating_ip_actions = FloatingIpActionResource()
+        self.floating_ips = FloatingIpResource()
+        self.regions = RegionResource()
+        self.sizes = SizeResource()
+        self.tags = TagResource()
+
