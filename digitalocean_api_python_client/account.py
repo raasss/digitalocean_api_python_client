@@ -1,6 +1,7 @@
 class Account(object):
     """Account object.
     As per DigitalOcean documentation at https://developers.digitalocean.com/documentation/v2/#account
+
     Args:
         droplet_limit (int): Application name
         floating_ip_limit (str): Environment/account name of changed infrastructure
