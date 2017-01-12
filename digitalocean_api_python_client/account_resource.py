@@ -3,10 +3,14 @@ import logging
 
 
 class AccountResource(Api):
+    """Account Resource as per https://developers.digitalocean.com/documentation/v2/#account"""
+
     def __init__(self):
         self.path = '/v2/account'
 
     def info(self):
+        """Get User Information as per """
+
         logging.info('Get User Information')
 
         query = ''
