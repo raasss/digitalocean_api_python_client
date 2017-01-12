@@ -8,6 +8,13 @@ import time
 client = digitalocean_api_python_client.Client()
 
 ###############################################################################
+### testing client.account.info()
+###############################################################################
+
+account = client.account.info()
+print(account)
+
+###############################################################################
 ### testing client.ssh_keys.all()
 ###############################################################################
 
@@ -105,7 +112,7 @@ droplets = client.droplets.all()
 i = 0
 for droplet in droplets:
     print('>>> Found droplet: {}'.format(vars(droplet)))
-    if droplet.name == droplet1_def['name'] && droplet.region == droplet1_def['region']:
+    if droplet.name == droplet1_def['name'] and droplet.region == droplet1_def['region']:
         print('>>> Droplet already created!')
         droplet1 = droplet
         i += 1
