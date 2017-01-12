@@ -11,6 +11,7 @@ Welcome to digitalocean_api_python_client's documentation!
    :caption: Contents:
 
    digitalocean_api_python_client
+   modules
 
 
 Indices and tables
