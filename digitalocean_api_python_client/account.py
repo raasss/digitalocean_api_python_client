@@ -1,12 +1,5 @@
 class Account(object):
-    """Account object.
-    As per DigitalOcean documentation at https://developers.digitalocean.com/documentation/v2/#account
-
-    Args:
-        droplet_limit (int): Application name
-        floating_ip_limit (str): Environment/account name of changed infrastructure
-        email (str): Path to the rendered configuration files
-    """
+    """Account class as per https://developers.digitalocean.com/documentation/v2/#account"""
 
     def __init__(self,
                  droplet_limit,
@@ -16,6 +9,7 @@ class Account(object):
                  email_verified,
                  status,
                  status_message):
+
         self.droplet_limit = droplet_limit
         self.floating_ip_limit = floating_ip_limit
         self.email = email
