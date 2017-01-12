@@ -11,12 +11,25 @@ class Account(object):
                  status_message):
 
         self.droplet_limit = droplet_limit
+        """(int) The total number of droplets the user may have."""
+
         self.floating_ip_limit = floating_ip_limit
+        """(int) The total number of floating IPs the user may have."""
+
         self.email = email
+        """(str) The email the user has registered for Digital Ocean with."""
+
         self.uuid = uuid
+        """(str) The universal identifier for this user (alphanumeric)."""
+
         self.email_verified = email_verified
+        """(bool) If true, the user has verified their account via email. False otherwise."""
+
         self.status = status
+        """(str) This value is one of "active", "warning" or "locked"."""
+
         self.status_message = status_message
+        """(str) A human-readable message giving more details about the status of the account."""
 
     def __repr__(self):
         s = 'uuid             : {}\n'.format(self.uuid)
