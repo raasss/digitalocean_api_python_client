@@ -1,5 +1,5 @@
 class Account(object):
-    """Account class as per https://developers.digitalocean.com/documentation/v2/#account"""
+    """Account object as per https://developers.digitalocean.com/documentation/v2/#account"""
 
     def __init__(self,
                  droplet_limit,
