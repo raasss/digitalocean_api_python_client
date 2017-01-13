@@ -12,7 +12,7 @@ class Account(object):
     :type droplet_limit: number
     :type floating_ip_limit: number
     :type email: string
-    :type uuid: string (alphanumeric)
+    :type uuid: string alphanumeric
     :type email_verified: boolean
     :type status: string
     :type status_message: string
