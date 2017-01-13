@@ -9,7 +9,7 @@ class Action(object):
     :param resource_id: A unique identifier for the resource that the action is associated with.
     :param resource_type: The type of resource that the action is associated with.
     :param region: (deprecated) A slug representing the region where the action occurred.
-    :param region_slug:A slug representing the region where the action occurred.
+    :param region_slug: A slug representing the region where the action occurred.
     """
 
     def __init__(self,
