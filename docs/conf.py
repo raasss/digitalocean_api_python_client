@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # digitalocean_api_python_client documentation build configuration file, created by
-# sphinx-quickstart on Thu Jan 12 16:10:39 2017.
+# sphinx-quickstart on Fri Jan 13 11:55:48 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
