@@ -23,31 +23,31 @@ class Action(object):
         :param region_slug:A slug representing the region where the action occurred.
         """
         self.id = id
-        """(int) A unique numeric ID that can be used to identify and reference an action."""
+        # """(int) A unique numeric ID that can be used to identify and reference an action."""
 
         self.status = status
-        """(str) The current status of the action. This can be "in-progress", "completed", or "errored"."""
+        # """(str) The current status of the action. This can be "in-progress", "completed", or "errored"."""
 
         self.type = type
-        """(str) This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action."""
+        # """(str) This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action."""
 
         self.started_at = started_at
-        """(str) A time value given in ISO8601 combined date and time format that represents when the action was initiated."""
+        # """(str) A time value given in ISO8601 combined date and time format that represents when the action was initiated."""
 
         self.completed_at = completed_at
-        """(str) A time value given in ISO8601 combined date and time format that represents when the action was completed."""
+        # """(str) A time value given in ISO8601 combined date and time format that represents when the action was completed."""
 
         self.resource_id = resource_id
-        """A unique identifier for the resource that the action is associated with."""
+        # """A unique identifier for the resource that the action is associated with."""
 
         self.resource_type = resource_type
-        """(str) The type of resource that the action is associated with."""
+        # """(str) The type of resource that the action is associated with."""
 
         self.region = region
-        """(str(deprecated) A slug representing the region where the action occurred."""
+        # """(str(deprecated) A slug representing the region where the action occurred."""
 
         self.region_slug = region_slug
-        """A slug representing the region where the action occurred."""
+        # """A slug representing the region where the action occurred."""
 
     def __repr__(self):
         s = 'id           : {}\n'.format(self.id)
