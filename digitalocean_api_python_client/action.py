@@ -1,5 +1,16 @@
 class Action(object):
-    """Action object as per https://developers.digitalocean.com/documentation/v2/#actions"""
+    """Action object as per https://developers.digitalocean.com/documentation/v2/#actions
+
+    :param id: A unique numeric ID that can be used to identify and reference an action.
+    :param status: The current status of the action. This can be "in-progress", "completed", or "errored".
+    :param type: This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
+    :param started_at: A time value given in ISO8601 combined date and time format that represents when the action was initiated.
+    :param completed_at: A time value given in ISO8601 combined date and time format that represents when the action was completed.
+    :param resource_id: A unique identifier for the resource that the action is associated with.
+    :param resource_type: The type of resource that the action is associated with.
+    :param region: (deprecated) A slug representing the region where the action occurred.
+    :param region_slug:A slug representing the region where the action occurred.
+    """
 
     def __init__(self,
                  id,
@@ -11,17 +22,6 @@ class Action(object):
                  resource_type,
                  region,
                  region_slug):
-        """
-        :param id: A unique numeric ID that can be used to identify and reference an action.
-        :param status: The current status of the action. This can be "in-progress", "completed", or "errored".
-        :param type: This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
-        :param started_at: A time value given in ISO8601 combined date and time format that represents when the action was initiated.
-        :param completed_at: A time value given in ISO8601 combined date and time format that represents when the action was completed.
-        :param resource_id: A unique identifier for the resource that the action is associated with.
-        :param resource_type: The type of resource that the action is associated with.
-        :param region: (deprecated) A slug representing the region where the action occurred.
-        :param region_slug:A slug representing the region where the action occurred.
-        """
         self.id = id
         # """(int) A unique numeric ID that can be used to identify and reference an action."""
 
