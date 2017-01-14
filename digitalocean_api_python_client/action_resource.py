@@ -4,17 +4,13 @@ import time
 
 
 class ActionResource(Api):
-    """Action object as per https://developers.digitalocean.com/documentation/v2/#actions
+    """Action Resource as per https://developers.digitalocean.com/documentation/v2/#actions
 
-    :param id: A unique numeric ID that can be used to identify and reference an action.
-    :param status: The current status of the action. This can be "in-progress", "completed", or "errored".
-    :param type: This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
-    :param started_at: A time value given in ISO8601 combined date and time format that represents when the action was initiated.
-    :param completed_at: A time value given in ISO8601 combined date and time format that represents when the action was completed.
-    :param resource_id: A unique identifier for the resource that the action is associated with.
-    :param resource_type: The type of resource that the action is associated with.
-    :param region: (deprecated) A slug representing the region where the action occurred.
-    :param region_slug: A slug representing the region where the action occurred.
+    Actions are records of events that have occurred on the resources in your account. These can be things like rebooting a Droplet, or transferring an image to a new region.
+
+    An action object is created every time one of these actions is initiated. The action object contains information about the current status of the action, start and complete timestamps, and the associated resource type and ID.
+
+    Every action that creates an action object is available through this endpoint. Completed actions are not removed from this list and are always available for querying.
     """
 
     def __init__(self):
@@ -23,15 +19,11 @@ class ActionResource(Api):
     def all(self, page=None, per_page=None):
         """Action object as per https://developers.digitalocean.com/documentation/v2/#actions
 
-        :param id: A unique numeric ID that can be used to identify and reference an action.
-        :param status: The current status of the action. This can be "in-progress", "completed", or "errored".
-        :param type: This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
-        :param started_at: A time value given in ISO8601 combined date and time format that represents when the action was initiated.
-        :param completed_at: A time value given in ISO8601 combined date and time format that represents when the action was completed.
-        :param resource_id: A unique identifier for the resource that the action is associated with.
-        :param resource_type: The type of resource that the action is associated with.
-        :param region: (deprecated) A slug representing the region where the action occurred.
-        :param region_slug: A slug representing the region where the action occurred.
+        To list all of the actions that have been executed on the current account, send a GET request to /v2/actions.
+
+        This will be the entire list of actions taken on your account, so it will be quite large. As with any large collection returned by the API, the results will be paginated with only 25 on each page by default.
+
+        The results will be returned as a JSON object with an actions key. This will be set to an array filled with action objects containing the standard action attributes:
         """
 
         logging.info('List all Actions. (page={}, per_page={})'.format(page, per_page))
@@ -50,15 +42,9 @@ class ActionResource(Api):
     def find(self, id):
         """Action object as per https://developers.digitalocean.com/documentation/v2/#actions
 
-        :param id: A unique numeric ID that can be used to identify and reference an action.
-        :param status: The current status of the action. This can be "in-progress", "completed", or "errored".
-        :param type: This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
-        :param started_at: A time value given in ISO8601 combined date and time format that represents when the action was initiated.
-        :param completed_at: A time value given in ISO8601 combined date and time format that represents when the action was completed.
-        :param resource_id: A unique identifier for the resource that the action is associated with.
-        :param resource_type: The type of resource that the action is associated with.
-        :param region: (deprecated) A slug representing the region where the action occurred.
-        :param region_slug: A slug representing the region where the action occurred.
+        To retrieve a specific action object, send a GET request to /v2/actions/$ACTION_ID.
+
+        The result will be a JSON object with an action key. This will be set to an action object containing the standard action attributes:
         """
 
         logging.info('Retrieve an existing Action. (id={})'.format(id))
@@ -66,26 +52,13 @@ class ActionResource(Api):
         query = '/{}'.format(id)
 
         return self.get_object(method='GET',
-                            url=self.add_query_to_url(query),
-                            headers=self.headers,
-                            body=None,
-                            response_ok=200,
-                            response_body_json_key='action')
+                               url=self.add_query_to_url(query),
+                               headers=self.headers,
+                               body=None,
+                               response_ok=200,
+                               response_body_json_key='action')
 
     def wait_for_actions_completion(self, object_with_actions, number_of_retries=24):
-        """Action object as per https://developers.digitalocean.com/documentation/v2/#actions
-
-        :param id: A unique numeric ID that can be used to identify and reference an action.
-        :param status: The current status of the action. This can be "in-progress", "completed", or "errored".
-        :param type: This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
-        :param started_at: A time value given in ISO8601 combined date and time format that represents when the action was initiated.
-        :param completed_at: A time value given in ISO8601 combined date and time format that represents when the action was completed.
-        :param resource_id: A unique identifier for the resource that the action is associated with.
-        :param resource_type: The type of resource that the action is associated with.
-        :param region: (deprecated) A slug representing the region where the action occurred.
-        :param region_slug: A slug representing the region where the action occurred.
-        """
-
         logging.info('Waiting for all actions to be completed. (actions={})'.format(vars(object_with_actions)))
 
         try:
@@ -93,7 +66,7 @@ class ActionResource(Api):
         except:
             raise ValueError('Can not find argument actions!')
 
-        i=0
+        i = 0
 
         while True:
             all_actions_completed = True
