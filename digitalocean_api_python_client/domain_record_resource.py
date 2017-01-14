@@ -69,6 +69,36 @@ class DomainRecordResource(Api):
         | weight     | nullable number   | The weight of records with the same priority (for SRV records only. null otherwise).                              | SRV                                |
         +------------+-------------------+-------------------------------------------------------------------------------------------------------------------+------------------------------------+
 
+        :param record: Domain record definition.
+        :param for_domain: Domain name where domain record should be created.
+
+        :type record: dict
+        :type for_domain: str
+
+        :return: DomainRecord
+
+        Example of A record parameter::
+
+            record1 = {'type': 'A',
+                       'name': 'www1',
+                       'data': '127.127.127.127'}
+
+        Example of MX record parameter::
+
+            record2 = {'type': 'MX',
+                       'name': 'smtp',
+                       'data': '127.127.127.127',
+                       'priority': 20}
+
+        Example of SRV record parameter::
+
+            record3 = {'type': 'SRV',
+                       'name': '_http._tcp',
+                       'data': 'www.example.com'
+                       'priority': 10,
+                       'port': 80,
+                       'weight': 50}
+
         .. seealso:: https://developers.digitalocean.com/documentation/v2/#create-a-new-domain-record
         """
         query = "/{}/records".format(for_domain)
