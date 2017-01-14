@@ -1,5 +1,5 @@
 class Action(object):
-    """Account object as per https://developers.digitalocean.com/documentation/v2/#account
+    """Account object as per https://developers.digitalocean.com/documentation/v2/#actions
 
     :param id: A unique numeric ID that can be used to identify and reference an action.
     :param status: The current status of the action. This can be 'in-progress', 'completed', or 'errored'.
