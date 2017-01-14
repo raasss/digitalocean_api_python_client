@@ -4,7 +4,7 @@ import time
 
 
 class ActionResource(Api):
-    """Action Resource as per https://developers.digitalocean.com/documentation/v2/#actions
+    """Actions as per https://developers.digitalocean.com/documentation/v2/#actions
 
     Actions are records of events that have occurred on the resources in your account. These can be things like rebooting a Droplet, or transferring an image to a new region.
 
@@ -17,7 +17,7 @@ class ActionResource(Api):
         self.path = '/v2/actions'
 
     def all(self, page=None, per_page=None):
-        """Action object as per https://developers.digitalocean.com/documentation/v2/#actions
+        """List all Actions as per https://developers.digitalocean.com/documentation/v2/#list-all-actions
 
         To list all of the actions that have been executed on the current account, send a GET request to /v2/actions.
 
@@ -40,11 +40,11 @@ class ActionResource(Api):
                                   per_page=per_page)
 
     def find(self, id):
-        """Action object as per https://developers.digitalocean.com/documentation/v2/#actions
+        """Retrieve an existing Action as per https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-action
 
         To retrieve a specific action object, send a GET request to /v2/actions/$ACTION_ID.
 
-        The result will be a JSON object with an action key. This will be set to an action object containing the standard action attributes:
+        The result will be a JSON object with an action key. This will be set to an action object containing the standard action attributes.
         """
 
         logging.info('Retrieve an existing Action. (id={})'.format(id))
