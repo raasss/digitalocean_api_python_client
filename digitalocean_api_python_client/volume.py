@@ -1,4 +1,23 @@
 class Volume(object):
+    """Volume object as per https://developers.digitalocean.com/documentation/v2/#block-storage
+
+    :param id: The unique identifier for the Block Storage volume.
+    :param region: The region that the Block Storage volume is located in. When setting a region, the value should be the slug identifier for the region. When you query a Block Storage volume, the entire region object will be returned.
+    :param droplet_ids: An array containing the IDs of the Droplets the volume is attached to. Note that at this time, a volume can only be attached to a single Droplet.
+    :param name: A human-readable name for the Block Storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+    :param description: An optional free-form text field to describe a Block Storage volume.
+    :param size_gigabytes: The size of the Block Storage volume in GiB (1024^3).
+    :param created_at: The size of the Block Storage volume in GiB (1024^3).
+
+    :type id: string
+    :type region: object
+    :type droplet_ids: array
+    :type name: string
+    :type description: string
+    :type size_gigabytes: number
+    :type created_at: string
+    """
+
     def __init__(self,
                  id,
                  region,
