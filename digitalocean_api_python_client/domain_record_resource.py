@@ -94,7 +94,7 @@ class DomainRecordResource(Api):
 
             record3 = {'type': 'SRV',
                        'name': '_http._tcp',
-                       'data': 'www.example.com'
+                       'data': 'www.example.com',
                        'priority': 10,
                        'port': 80,
                        'weight': 50}
