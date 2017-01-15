@@ -28,9 +28,13 @@ class DomainRecordResource(Api):
 
         Get a listing of all records configured for a domain.
 
-        The response will be a JSON object with a key called domain_records. The value of this will be an array of domain record objects, each of which contains the standard domain record attributes:
+        The response will be a JSON object with a key called domain_records.
+        The value of this will be an array of domain record objects, each of
+        which contains the standard domain record attributes.
 
-        For attributes that are not used by a specific record type, a value of null will be returned. For instance, all records other than SRV will have null for the weight and port attributes.
+        For attributes that are not used by a specific record type, a value of
+        null will be returned. For instance, all records other than SRV will
+        have null for the weight and port attributes.
 
         .. seealso::  https://developers.digitalocean.com/documentation/v2/#list-all-domain-records
 
