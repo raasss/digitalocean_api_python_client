@@ -26,6 +26,12 @@ class Api(object):
         self.__class__.headers['Authorization'] += token
 
     def add_query_to_url(self, query):
+        """
+        :param query: Query suffix without protocol, hostname and resource
+            path.
+        :type query: str
+        :return: Complete API url.
+        """
         url = '{protocol}://{host}{path}{query}'.format(protocol=self.protocol,
                                                         host=self.host,
                                                         path=self.path,
@@ -33,6 +39,19 @@ class Api(object):
         return url
 
     def create_object_from_params(self, json, key):
+        """
+        Method that creates Python from JSON object depending on JSON key
+
+        :param json: JSON object from API response
+        :param key: JSON key from API response
+
+        :type json: str
+        :type key: str
+
+        :return: Python object as defined in converter dictionary
+        :rtype: object
+
+        """
         converter = {'account': Account,
                      'actions': Action,
                      'action': Action,
@@ -49,6 +68,7 @@ class Api(object):
                      'domain_record': DomainRecord,
                      'domain_records': DomainRecord,
                      'backups': Image,
+                     'images': Image,
                      'floating_ips': FloatingIp,
                      'floating_ip': FloatingIp,
                      'regions': Region,
@@ -60,6 +80,22 @@ class Api(object):
 
     @staticmethod
     def request(method, url, headers, body, response_ok):
+        """Wrapper method for requests library
+
+        :param method: HTTP method (GET, DELETE, PUT, POST or HEAD)
+        :param url: Complete API url
+        :param headers: HTTP request headers
+        :param body: HTTP request body
+        :param response_ok: HTTP response status code for successfull request.
+
+        :type method: str
+        :type url: str
+        :type headers: dict
+        :type body: dict
+        :type response_ok: int
+
+        :return: Dictionary
+        """
         r = requests.request(method=method,
                              url=url,
                              headers=headers,

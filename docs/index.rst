@@ -1,17 +1,17 @@
-.. digitalocean_api_python_client documentation master file, created by
-   sphinx-quickstart on Sun Jan 15 15:40:05 2017.
+.. DigitalOcean API Python Client documentation master file, created by
+   sphinx-quickstart on Mon Jan 16 09:14:20 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to digitalocean_api_python_client's documentation!
+Welcome to DigitalOcean API Python Client's documentation!
 ==========================================================
+
 
 .. toctree::
    :maxdepth: 99
    :caption: Contents:
 
-   digitalocean_api_python_client
-
+   modules
 
 Indices and tables
 ==================

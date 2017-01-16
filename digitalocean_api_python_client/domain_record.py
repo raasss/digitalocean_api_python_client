@@ -9,13 +9,13 @@ class DomainRecord(object):
     :param port:  The port for SRV records.
     :param weight: The weight for SRV records.
 
-    :type id: number
-    :type type: string
+    :type id: int
+    :type type: str
     :type name: string
     :type data: string
-    :type priority: nullable number
-    :type port: nullable number
-    :type weight: nullable number
+    :type priority: int or None
+    :type port: int or None
+    :type weight: int or None
     """
     def __init__(self,
                  id,

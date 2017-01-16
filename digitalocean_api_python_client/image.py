@@ -45,3 +45,17 @@ class Image(object):
         self.min_disk_size = min_disk_size
         self.size_gigabytes = size_gigabytes
         self.created_at = created_at
+
+    def __repr__(self):
+        s = 'id            : {}\n'.format(self.id)
+        s += 'name          : {}\n'.format(self.name)
+        s += 'type          : {}\n'.format(self.type)
+        s += 'distribution  : {}\n'.format(self.distribution)
+        s += 'slug          : {}\n'.format(self.slug)
+        s += 'public        : {}\n'.format(self.public)
+        s += 'regions       : {}\n'.format(self.regions)
+        s += 'min_disk_size : {}\n'.format(self.min_disk_size)
+        s += 'size_gigabytes: {}\n'.format(self.size_gigabytes)
+        s += 'created_at    : {}'.format(self.created_at)
+
+        return s

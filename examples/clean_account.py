@@ -62,8 +62,13 @@ for snapshot in snapshots:
 images = client.images.all(private=True)
 
 for image in images:
-    print('Deleting image (id={}, name={}) ...'.format(image.id, image.name))
-    client.images.delete(image.id)
+    print(image)
+
+    if image.type == 'backup':
+        print('Skipping backup image (id={}, name={}) ...'.format(image.id, image.name))
+    else:
+        print('Deleting image (id={}, name={}) ...'.format(image.id, image.name))
+        client.images.delete(image.id)
 
 ###############################################################################
 ###############################################################################
