@@ -14,7 +14,6 @@ Submodules
 
 .. toctree::
    :maxdepth: 99
-   :titlesonly:
 
    digitalocean_api_python_client.account
    digitalocean_api_python_client.account_resource

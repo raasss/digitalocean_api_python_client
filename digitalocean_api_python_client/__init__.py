@@ -1,3 +1,7 @@
+"""
+Some module docstring
+
+"""
 from .client import Client
 
 # import logging

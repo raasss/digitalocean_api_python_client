@@ -11,6 +11,8 @@ Welcome to DigitalOcean API Python Client's documentation!
    :maxdepth: 99
    :caption: Contents:
 
+   intro
+   tutorial
    modules
 
 Indices and tables
