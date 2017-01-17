@@ -13,6 +13,7 @@ from .region import Region
 from .size import Size
 from .tag import Tag
 
+
 class Api(object):
     token = ''
     headers = {'Content-Type': 'application/json',
@@ -112,7 +113,8 @@ class Api(object):
                     'body': json_body}
 
         if r.status_code != response_ok:
-            raise ValueError('Got wrong HTTP status code! (response = {}'.format(response))
+            raise ValueError(
+                'Got wrong HTTP status code! (response = {}'.format(response))
 
         return response
 
@@ -126,7 +128,8 @@ class Api(object):
         r = self.request(method, url, headers, body, response_ok)
 
         json_object = r['body'][response_body_json_key]
-        object = self.create_object_from_params(json_object, response_body_json_key)
+        object = self.create_object_from_params(json_object,
+                                                response_body_json_key)
 
         object.response = r
 

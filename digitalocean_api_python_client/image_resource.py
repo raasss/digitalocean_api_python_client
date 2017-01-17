@@ -20,7 +20,7 @@ class ImageResource(Api):
                 raise ValueError('Unknown value for parameter type: {}'.format(type))
 
         if private is not None:
-            if private == True:
+            if private is True:
                 query += '&private=true'
             else:
                 raise ValueError('Unknown value for parameter private: {}'.format(private))

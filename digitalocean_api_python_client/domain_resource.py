@@ -1,14 +1,17 @@
 from .api import Api
 import logging
 
+
 class DomainResource(Api):
     def __init__(self):
         self.path = '/v2/domains'
 
     def all(self, page=None, per_page=None):
-        logging.info('List all Domains. (page={}, per_page={})'.format(page, per_page))
+        logging.info(
+            'List all Domains. (page={}, per_page={})'.format(page, per_page))
 
-        query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
+        query = '?page={}&per_page={}'.format(page or 1,
+                                              per_page or self.per_page)
 
         return self.get_paginator(method='GET',
                                   url=self.add_query_to_url(query),

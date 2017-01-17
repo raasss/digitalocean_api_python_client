@@ -1,15 +1,19 @@
 from .api import Api
 import logging
 
+
 class SnapshotResource(Api):
     def __init__(self):
         self.path = '/v2/snapshots'
 
     def all(self, resource_type=None, page=None, per_page=None):
-        logging.info('List all snapshots. (resource_type={}, page={}, per_page={})'.format(resource_type, page, per_page))
+        logging.info(
+            'List all snapshots. (resource_type={}, page={}, per_page={})'.format(
+                resource_type, page, per_page))
 
         if resource_type is None:
-            query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
+            query = '?page={}&per_page={}'.format(page or 1,
+                                                  per_page or self.per_page)
         else:
             query = '?resource_type={}&page={}&per_page={}'.format(
                 resource_type, page or 1, per_page or self.per_page)

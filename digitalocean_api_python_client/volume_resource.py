@@ -7,9 +7,12 @@ class VolumeResource(Api):
         self.path = '/v2/volumes'
 
     def all(self, region=None, page=None, per_page=None):
-        logging.info('List all Volumes. (region={}, page={}, per_page={})'.format(region, page, per_page))
+        logging.info(
+            'List all Volumes. (region={}, page={}, per_page={})'.format(
+                region, page, per_page))
 
-        query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
+        query = '?page={}&per_page={}'.format(page or 1,
+                                              per_page or self.per_page)
 
         if region is not None:
             query += "&region={}".format(region)
@@ -36,7 +39,8 @@ class VolumeResource(Api):
                                response_body_json_key='volume')
 
     def find(self, id):
-        logging.info('Retrieve an existing Block Storage volume. (id={})'.format(id))
+        logging.info(
+            'Retrieve an existing Block Storage volume. (id={})'.format(id))
 
         query = "/{}".format(id)
 
@@ -48,7 +52,9 @@ class VolumeResource(Api):
                                response_body_json_key='volume')
 
     def find_by_name(self, name, region, page=None, per_page=None):
-        query = '?name={}&region={}&page={}&per_page={}'.format(name, region, page or 1, per_page or self.per_page)
+        query = '?name={}&region={}&page={}&per_page={}'.format(name, region,
+                                                                page or 1,
+                                                                per_page or self.per_page)
 
         return self.get_paginator(method='GET',
                                   url=self.add_query_to_url(query),
@@ -60,7 +66,9 @@ class VolumeResource(Api):
                                   per_page=per_page)
 
     def snapshots(self, volume_id, page=None, per_page=None):
-        query = '/{}/snapshots?page={}&per_page={}'.format(volume_id, page or 1, per_page or self.per_page)
+        query = '/{}/snapshots?page={}&per_page={}'.format(volume_id,
+                                                           page or 1,
+                                                           per_page or self.per_page)
 
         return self.get_paginator(method='GET',
                                   url=self.add_query_to_url(query),
@@ -98,4 +106,3 @@ class VolumeResource(Api):
                             headers=self.headers,
                             body=None,
                             response_ok=204)
-

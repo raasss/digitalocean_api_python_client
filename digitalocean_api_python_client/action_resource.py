@@ -81,7 +81,7 @@ class ActionResource(Api):
                     all_actions_completed = False
                     continue
 
-            if all_actions_completed == True:
+            if all_actions_completed is True:
                 return True
 
             i += 1

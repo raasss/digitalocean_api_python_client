@@ -20,11 +20,13 @@ from .tag_resource import TagResource
 import os
 import yaml
 
+
 class Client(object):
     def __init__(self, token=None):
 
         homedir = os.path.expanduser('~')
-        config_file = '{}/.digitalocean_api_python_client/config.yml'.format(homedir)
+        config_file = '{}/.digitalocean_api_python_client/config.yml'.format(
+            homedir)
 
         if token is not None:
             Api().init(token)
@@ -53,4 +55,3 @@ class Client(object):
         self.regions = RegionResource()
         self.sizes = SizeResource()
         self.tags = TagResource()
-
