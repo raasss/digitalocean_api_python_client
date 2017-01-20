@@ -25,7 +25,7 @@ class TagResource(Api):
                                response_ok=201,
                                response_body_json_key='tag')
 
-    def all(self, name):
+    def all(self, page=None, per_page=None):
         query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
 
         return self.get_paginator(method='GET',

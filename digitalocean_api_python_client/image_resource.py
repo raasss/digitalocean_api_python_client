@@ -34,7 +34,7 @@ class ImageResource(Api):
                                   page=page,
                                   per_page=per_page)
 
-    def actions(self, image_id):
+    def actions(self, image_id, page=None, per_page=None):
         query = "/{}/actions".format(image_id)
 
         return self.get_paginator(method='GET',

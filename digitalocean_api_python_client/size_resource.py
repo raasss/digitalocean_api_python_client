@@ -5,7 +5,7 @@ class SizeResource(Api):
     def __init__(self):
         self.path = '/v2/sizes'
 
-    def all(self):
+    def all(self, page=None, per_page=None):
         query = '?page={}&per_page={}'.format(page or 1, per_page or self.per_page)
 
         return self.get_paginator(method='GET',
