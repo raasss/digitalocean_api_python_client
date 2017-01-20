@@ -2,6 +2,6 @@ Package
 =======
 
 .. toctree::
-   :maxdepth: 99
+   :maxdepth: 3
 
    digitalocean_api_python_client

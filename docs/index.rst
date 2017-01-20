@@ -8,7 +8,7 @@ Welcome to DigitalOcean API Python Client's documentation!
 
 
 .. toctree::
-   :maxdepth: 99
+   :maxdepth: 2
    :caption: Contents:
 
    intro
