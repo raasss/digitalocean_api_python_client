@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VENV_ROOTPATH="$(dirname $0)/../virtualenv"
+VENV_ROOTPATH="$(dirname $0)/../venv"
 
 sudo apt-get -y install python python-pip
 sudo apt-get -y install python3 python3-pip
