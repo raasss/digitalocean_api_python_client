@@ -44,7 +44,6 @@ if [ ! -f "${VENV_PATH}/bin/activate" ]; then
 fi
 source "${VENV_PATH}/bin/activate"
 pip install -r "${VENV_ROOTPATH}/../requirements.txt"
-# pip install requests PyYAML nose mock
 deactivate
 
 VENV_PATH="${VENV_ROOTPATH}/python3"
@@ -54,5 +53,4 @@ if [ ! -f "${VENV_PATH}/bin/activate" ]; then
 fi
 source "${VENV_PATH}/bin/activate"
 pip install -r "${VENV_ROOTPATH}/../requirements.txt"
-# pip install requests PyYAML nose
 deactivate
