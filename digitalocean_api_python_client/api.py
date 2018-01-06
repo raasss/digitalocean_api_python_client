@@ -28,8 +28,7 @@ class Api(object):
 
     def add_query_to_url(self, query):
         """
-        :param query: Query suffix without protocol, hostname and resource
-            path.
+        :param query: Query suffix without protocol, hostname and resource path.
         :type query: str
         :return: Complete API url.
         """

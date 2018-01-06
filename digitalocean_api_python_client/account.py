@@ -7,7 +7,8 @@ class Account(object):
     :param uuid: The universal identifier for this user (alphanumeric).
     :param email_verified: If true, the user has verified their account via email. False otherwise.
     :param status: This value is one of "active", "warning" or "locked".
-    :param status_message: A human-readable message giving more details about the status of the account.
+    :param status_message: A human-readable message giving more details about the status of the
+                           account.
 
     :type droplet_limit: number
     :type floating_ip_limit: number
@@ -35,12 +36,12 @@ class Account(object):
         self.status_message = status_message
 
     def __repr__(self):
-        s = 'uuid             : {}\n'.format(self.uuid)
-        s += 'email            : {}\n'.format(self.email)
-        s += 'email_verified   : {}\n'.format(self.email_verified)
-        s += 'droplet_limit    : {}\n'.format(self.droplet_limit)
-        s += 'floating_ip_limit: {}\n'.format(self.floating_ip_limit)
-        s += 'status           : {}\n'.format(self.status)
-        s += 'status_message   : {}'.format(self.status_message or None)
+        result = 'uuid             : {}\n'.format(self.uuid)
+        result += 'email            : {}\n'.format(self.email)
+        result += 'email_verified   : {}\n'.format(self.email_verified)
+        result += 'droplet_limit    : {}\n'.format(self.droplet_limit)
+        result += 'floating_ip_limit: {}\n'.format(self.floating_ip_limit)
+        result += 'status           : {}\n'.format(self.status)
+        result += 'status_message   : {}'.format(self.status_message or None)
 
-        return s
+        return result

@@ -6,24 +6,33 @@ import time
 class ActionResource(Api):
     """Actions as per https://developers.digitalocean.com/documentation/v2/#actions
 
-    Actions are records of events that have occurred on the resources in your account. These can be things like rebooting a Droplet, or transferring an image to a new region.
+    Actions are records of events that have occurred on the resources in your account. These can be
+    things like rebooting a Droplet, or transferring an image to a new region.
 
-    An action object is created every time one of these actions is initiated. The action object contains information about the current status of the action, start and complete timestamps, and the associated resource type and ID.
+    An action object is created every time one of these actions is initiated. The action object
+    contains information about the current status of the action, start and complete timestamps, and
+    the associated resource type and ID.
 
-    Every action that creates an action object is available through this endpoint. Completed actions are not removed from this list and are always available for querying.
+    Every action that creates an action object is available through this endpoint. Completed
+    actions are not removed from this list and are always available for querying.
     """
 
     def __init__(self):
         self.path = '/v2/actions'
 
     def all(self, page=None, per_page=None):
-        """List all Actions as per https://developers.digitalocean.com/documentation/v2/#list-all-actions
+        """List all Actions as per
+        https://developers.digitalocean.com/documentation/v2/#list-all-actions
 
-        To list all of the actions that have been executed on the current account, send a GET request to /v2/actions.
+        To list all of the actions that have been executed on the current account, send a GET
+        request to /v2/actions.
 
-        This will be the entire list of actions taken on your account, so it will be quite large. As with any large collection returned by the API, the results will be paginated with only 25 on each page by default.
+        This will be the entire list of actions taken on your account, so it will be quite large.
+        As with any large collection returned by the API, the results will be paginated with only
+        25 on each page by default.
 
-        The results will be returned as a JSON object with an actions key. This will be set to an array filled with action objects containing the standard action attributes:
+        The results will be returned as a JSON object with an actions key. This will be set to an
+        array filled with action objects containing the standard action attributes:
         """
 
         logging.info('List all Actions. (page={}, per_page={})'.format(page, per_page))
@@ -40,11 +49,13 @@ class ActionResource(Api):
                                   per_page=per_page)
 
     def find(self, id):
-        """Retrieve an existing Action as per https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-action
+        """Retrieve an existing Action as per
+        https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-action
 
         To retrieve a specific action object, send a GET request to /v2/actions/$ACTION_ID.
 
-        The result will be a JSON object with an action key. This will be set to an action object containing the standard action attributes.
+        The result will be a JSON object with an action key. This will be set to an action object
+        containing the standard action attributes.
         """
 
         logging.info('Retrieve an existing Action. (id={})'.format(id))

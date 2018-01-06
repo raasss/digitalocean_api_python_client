@@ -2,15 +2,23 @@ class Image(object):
     """Image object as per https://developers.digitalocean.com/documentation/v2/#images
 
     :param id: A unique number that can be used to identify and reference a specific image.
-    :param name: The display name that has been given to an image. This is what is shown in the control panel and is generally a descriptive title for the image in question.
-    :param type: The kind of image, describing the duration of how long the image is stored. This is either "snapshot" or "backup".
+    :param name: The display name that has been given to an image. This is what is shown in the
+                 control panel and is generally a descriptive title for the image in question.
+    :param type: The kind of image, describing the duration of how long the image is stored. This is
+                 either "snapshot" or "backup".
     :param distribution: This attribute describes the base distribution used for this image.
-    :param slug: A uniquely identifying string that is associated with each of the DigitalOcean-provided public images. These can be used to reference a public image as an alternative to the numeric id.
-    :param public: This is a boolean value that indicates whether the image in question is public or not. An image that is public is available to all accounts. A non-public image is only accessible from your account.
-    :param regions: This attribute is an array of the regions that the image is available in. The regions are represented by their identifying slug values.
+    :param slug: A uniquely identifying string that is associated with each of the
+                 DigitalOcean-provided public images. These can be used to reference a public image
+                 as an alternative to the numeric id.
+    :param public: This is a boolean value that indicates whether the image in question is public or
+                   not. An image that is public is available to all accounts. A non-public image is
+                   only accessible from your account.
+    :param regions: This attribute is an array of the regions that the image is available in. The
+                    regions are represented by their identifying slug values.
     :param min_disk_size: The minimum 'disk' required for a size to use this image.
     :param size_gigabytes: The size of the image in gigabytes.
-    :param created_at: A time value given in ISO8601 combined date and time format that represents when the Image was created.
+    :param created_at: A time value given in ISO8601 combined date and time format that represents
+                       when the Image was created.
 
     :type id: number
     :type name: string
@@ -47,15 +55,15 @@ class Image(object):
         self.created_at = created_at
 
     def __repr__(self):
-        s = 'id            : {}\n'.format(self.id)
-        s += 'name          : {}\n'.format(self.name)
-        s += 'type          : {}\n'.format(self.type)
-        s += 'distribution  : {}\n'.format(self.distribution)
-        s += 'slug          : {}\n'.format(self.slug)
-        s += 'public        : {}\n'.format(self.public)
-        s += 'regions       : {}\n'.format(self.regions)
-        s += 'min_disk_size : {}\n'.format(self.min_disk_size)
-        s += 'size_gigabytes: {}\n'.format(self.size_gigabytes)
-        s += 'created_at    : {}'.format(self.created_at)
+        result = 'id            : {}\n'.format(self.id)
+        result += 'name          : {}\n'.format(self.name)
+        result += 'type          : {}\n'.format(self.type)
+        result += 'distribution  : {}\n'.format(self.distribution)
+        result += 'slug          : {}\n'.format(self.slug)
+        result += 'public        : {}\n'.format(self.public)
+        result += 'regions       : {}\n'.format(self.regions)
+        result += 'min_disk_size : {}\n'.format(self.min_disk_size)
+        result += 'size_gigabytes: {}\n'.format(self.size_gigabytes)
+        result += 'created_at    : {}'.format(self.created_at)
 
-        return s
+        return result

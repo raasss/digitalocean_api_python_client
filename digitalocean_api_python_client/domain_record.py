@@ -1,5 +1,6 @@
 class DomainRecord(object):
-    """Domain Record object as per https://developers.digitalocean.com/documentation/v2/#domain-records
+    """Domain Record object as per
+    https://developers.digitalocean.com/documentation/v2/#domain-records
 
     :param id: A unique identifier for each domain record.
     :param type: The type of the DNS record (ex: A, CNAME, TXT, ...).

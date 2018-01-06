@@ -1,3 +1,5 @@
+"""Docstring placeholder"""
+
 class SshKey(object):
     """SSH Key object as per https://developers.digitalocean.com/documentation/v2/#ssh-keys
 
@@ -18,15 +20,13 @@ class SshKey(object):
     :type name: string
     """
 
-    def __init__(self,
-                 id,
-                 fingerprint,
-                 public_key,
-                 name):
+    def __init__(self, id, fingerprint, public_key, name):
+
         self.id = id
         self.fingerprint = fingerprint
         self.public_key = public_key
         self.name = name
 
     def __repr__(self):
+
         return str(vars(self))

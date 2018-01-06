@@ -9,7 +9,8 @@ class AccountResource(Api):
         self.path = '/v2/account'
 
     def info(self):
-        """Get User Information as per https://developers.digitalocean.com/documentation/v2/#get-user-information"""
+        """Get User Information as per
+        https://developers.digitalocean.com/documentation/v2/#get-user-information"""
 
         logging.info('Get User Information')
 
