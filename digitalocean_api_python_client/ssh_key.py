@@ -4,13 +4,13 @@ class SshKey(object):
     :param id: This is a unique identification number for the key. This can be used to reference a
                specific SSH key when you wish to embed a key into a Droplet.
     :param fingerprint: This attribute contains the fingerprint value that is generated from the
-                        public key. This is a unique identifier that will differentiate it from other keys using a
-                        format that SSH recognizes.
+                        public key. This is a unique identifier that will differentiate it from
+                        other keys using a format that SSH recognizes.
     :param public_key: This attribute contains the entire public key string that was uploaded. This
-    is what is embedded into the root user's authorized_keys file if you choose to include this SSH
-    key during Droplet creation.
+                       is what is embedded into the root user's authorized_keys file if you choose
+                       to include this SSH key during Droplet creation.
     :param name: This is the human-readable display name for the given SSH key. This is used to
-    easily identify the SSH keys when they are displayed.
+                 easily identify the SSH keys when they are displayed.
 
     :type id: number
     :type fingerprint: string
