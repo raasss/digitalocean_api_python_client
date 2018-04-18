@@ -1,3 +1,10 @@
 *.pyc
 /.idea/
 /virtualenv/
+/venv/
+/docs/_build/
+/docs/_static/
+/docs/_templates/
+/tests/__pycache__/
+*.egg-info/
+
