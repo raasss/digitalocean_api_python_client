@@ -7,4 +7,4 @@
 /docs/_templates/
 /tests/__pycache__/
 *.egg-info/
-
+.vscode/
